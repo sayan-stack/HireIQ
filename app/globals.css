@@ -1,0 +1,174 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* ---------- THEME VARIABLES ---------- */
+:root {
+  /* Light Theme (default) - Vibrant Colors */
+  --bg-primary: linear-gradient(135deg, #e0f7fa 0%, #f3e5f5 50%, #fff3e0 100%);
+  --bg-primary-solid: #f0fdfa;
+  --bg-secondary: rgba(255, 255, 255, 0.95);
+  --bg-tertiary: #e0f2f1;
+  --bg-card: rgba(255, 255, 255, 0.98);
+  --bg-glass: rgba(255, 255, 255, 0.9);
+  --bg-dashboard: linear-gradient(135deg, #e0f7fa 0%, #f3e5f5 50%, #fff3e0 100%);
+  --bg-input: #ffffff;
+
+  --text-primary: #1e293b;
+  --text-secondary: #475569;
+  --text-tertiary: #64748b;
+  --text-muted: #94a3b8;
+
+  --border-subtle: rgba(20, 184, 166, 0.15);
+  --border-light: rgba(139, 92, 246, 0.12);
+  --border-accent: rgba(8, 145, 178, 0.4);
+  --border-color: #e0e7ff;
+
+  --accent-primary: #14b8a6;
+  --accent-primary-hover: #0d9488;
+  --accent-secondary: #8b5cf6;
+  --accent-success: #10b981;
+  --accent-warning: #f59e0b;
+  --accent-danger: #ef4444;
+  --accent-info: #6366f1;
+
+  --success-green: #10b981;
+  --error-red: #ef4444;
+
+  --gradient-primary: linear-gradient(135deg, #14b8a6 0%, #8b5cf6 50%, #ec4899 100%);
+  --gradient-bg: linear-gradient(135deg, #e0f7fa 0%, #f3e5f5 50%, #fff3e0 100%);
+  --accent-gradient: linear-gradient(135deg, #14b8a6 0%, #8b5cf6 50%, #ec4899 100%);
+
+  --shadow-sm: 0 2px 8px rgba(139, 92, 246, 0.08);
+  --shadow-md: 0 4px 16px rgba(139, 92, 246, 0.1);
+  --shadow-lg: 0 12px 40px rgba(139, 92, 246, 0.15);
+
+  --sidebar-bg: #0F172A;
+  --nav-bg: rgba(255, 255, 255, 0.95);
+}
+
+.dark,
+[data-theme="dark"] {
+  /* Dark Theme */
+  --bg-primary: #0b1220;
+  --bg-secondary: #0f172a;
+  --bg-tertiary: #1e293b;
+  --bg-card: rgba(15, 23, 42, 0.95);
+  --bg-glass: rgba(15, 23, 42, 0.85);
+  --bg-dashboard: #0b1220;
+  --bg-input: #1e293b;
+
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-tertiary: #94a3b8;
+  --text-muted: #64748b;
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-light: rgba(255, 255, 255, 0.12);
+  --border-accent: rgba(8, 145, 178, 0.4);
+  --border-color: #374151;
+
+  --accent-primary-hover: #0d9488;
+
+  --success-green: #10b981;
+  --error-red: #ef4444;
+
+  --gradient-bg: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
+  --accent-gradient: linear-gradient(135deg, #14b8a6 0%, #8b5cf6 50%, #ec4899 100%);
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.5);
+
+  --nav-bg: rgba(15, 23, 42, 0.9);
+}
+
+/* ---------- BASE ---------- */
+@layer base {
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+/* ---------- THEME TOGGLE BUTTON ---------- */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 0.75rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--accent-primary);
+  color: white;
+  border-color: var(--accent-primary);
+}
+
+/* ---------- RADIX / SHADCN FIXES ---------- */
+[data-radix-popper-content-wrapper] {
+  z-index: 50 !important;
+}
+
+/* ---------- DATE PICKER ---------- */
+.rdp {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-primary);
+  border-radius: 12px;
+}
+
+.rdp-day_selected {
+  background-color: #2563eb !important;
+  color: white !important;
+}
+
+.rdp-button:hover {
+  background-color: var(--bg-tertiary);
+}
+
+/* ---------- TIME PICKER ---------- */
+input[type="time"] {
+  color-scheme: dark;
+}
+
+.light input[type="time"] {
+  color-scheme: light;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+.light input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: none;
+}
+
+input[type="time"]::-webkit-datetime-edit {
+  color: var(--text-primary);
+}
+
+/* ---------- SCROLLBAR ---------- */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-tertiary);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
