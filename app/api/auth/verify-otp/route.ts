@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { verifyOTP } from '@/lib/otpStore';
+import { verifyOTPFirestore } from '@/lib/otpStoreFirestore';
 
 export async function POST(request: NextRequest) {
     try {
@@ -12,8 +12,8 @@ export async function POST(request: NextRequest) {
             );
         }
 
-        // Verify OTP using shared store
-        const result = verifyOTP(email, otp);
+        // Verify OTP from Firestore (works across serverless calls)
+        const result = await verifyOTPFirestore(email, otp);
 
         if (!result.valid) {
             return NextResponse.json(
